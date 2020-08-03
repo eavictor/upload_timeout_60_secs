@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post" action="{% url "upload_file" %}">
+        <input type="file" name="myfile">
+        <br/>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
