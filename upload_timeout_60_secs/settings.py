@@ -37,18 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',  # [REMOVE] channels, fallback to WSGI
+    # [REMOVE channels] for development server upload file request survive over 60 seconds.
+    # In production, uWSGI will just ignore channels site-package, and only serves synchronize http request/response.
+    'channels',
     'upload',
 ]
 
-# [REMOVE] below settings, fallback to WSGI
 ASGI_APPLICATION = 'upload_timeout_60_secs.routing.application'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
-# [REMOVE] above settings, fallback to WSGI
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
